@@ -1,24 +1,27 @@
-# Compiled class file
-*.class
+document.addEventListener("DOMContentLoaded", function () {
+    const productsContainer = document.getElementById("products");
 
-# Log file
-*.log
+    // Example products
+    const products = [
+        { id: 1, name: "Product 1", price: 20.99 },
+        { id: 2, name: "Product 2", price: 34.99 },
+        // Add more products as needed
+    ];
 
-# BlueJ files
-*.ctxt
+    // Display products
+    products.forEach(product => {
+        const productElement = document.createElement("div");
+        productElement.classList.add("product");
+        productElement.innerHTML = `
+            <h2>${product.name}</h2>
+            <p>$${product.price.toFixed(2)}</p>
+            <button onclick="addToCart(${product.id})">Add to Cart</button>
+        `;
+        productsContainer.appendChild(productElement);
+    });
+});
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-replay_pid*
+function addToCart(productId) {
+    // Add logic to handle adding a product to the cart
+    console.log(`Product ${productId} added to cart.`);
+}
